@@ -39,7 +39,7 @@ while capture.isOpened():
     # Morphology transformations to reduce noise
     kernel = np.ones((3,3), np.uint8)
     mask = cv.morphologyEx(mask, cv.MORPH_OPEN, kernel, iterations = 2)
-    mask = cv.morphologyEx(mask, cv.MORPH_DILATE, kernel, iterations = 1)
+    mask = cv.morphologyEx(mask, cv.MORPH_DILATE, kernel, iterations = 2)
 
     mask_inverted = cv.bitwise_not(mask)  # invertion of mask to find region without red 
 
