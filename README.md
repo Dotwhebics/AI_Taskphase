@@ -19,3 +19,11 @@
 > Completion of 5 stars in Problem Solving on Hackerrank
 
 > Basic Git
+
+## Week 3 :
+
+> Introduction to OpenCV and task of making an Invisibility Cloak
+
+> Report on OpenCV and Masking
+
+> Work on Hackerrank 6 stars in Problem Solving
