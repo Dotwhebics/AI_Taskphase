@@ -27,7 +27,7 @@ while capture.isOpened():
     # Hue range 0 degrees to 20 degrees (0 to 10 here cause uint8 can go only till 255)
     red1_lower = np.array([0, 120, 70])
     red1_upper = np.array([180, 255, 255])
-    mask1 = cv.inRange(hsv_frame, red1_lower, red1_lower)  # Finding the red color in frame
+    mask1 = cv.inRange(hsv_frame, red1_lower, red1_upper)  # Finding the red color in frame
 
     # Hue range 340 degrees to 360 degrees (170 to 180 here cause uint8 can go only till 255)
     red2_lower = np.array([170, 120, 70])
