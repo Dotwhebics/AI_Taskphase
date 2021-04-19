@@ -18,10 +18,10 @@ while capture.isOpened():
 
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)    # convert to hsv colourspace
 
-    lower = np.array([110,50,50], np.uint8)    # lower and upper hsv limits for blue 
-    upper = np.array([130,255,255], np.uint8)
+    lower = np.array([10,100,100], np.uint8)    # lower and upper hsv limits  
+    upper = np.array([40,255,255], np.uint8)
 
-    mask = cv.inRange(hsv, lower, upper)    # creating a mask to detect blue object 
+    mask = cv.inRange(hsv, lower, upper)    # creating a mask to detect object 
     mask = cv.erode(mask, None, iterations = 5)
     mask = cv.dilate(mask, None, iterations = 5)
 
