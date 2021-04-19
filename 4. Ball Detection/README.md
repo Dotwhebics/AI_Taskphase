@@ -18,6 +18,6 @@ The cv.cvtColor() function can be used to convert a passed image from one colour
 
 ## Ball Detection
 
-In the ball detection task, we first create a capture object of cv.VideoCapture() and read frames from the webcam. A mask with a desired colour range is created to segment out the ball. Then we find the contours and these help in drawing a boundary and centre. We also create a dequeue. The difference between a queue and a dequeue is the fact that appending in a queue is intuitively done at the end. But dequeue is a double ending queue so appending can be done from both sides. We save successive centre positions in the dequeue so the path can be traced.
+In the ball detection task, we first create a capture object of cv.VideoCapture() and read frames from the webcam. A mask with a desired colour range is created to segment out the ball. Then we find the contours and these help in drawing a boundary and centre. We also create a deque. The difference between a queue and a deque is the fact that appending in a queue is intuitively done at the end. But deque is a double ending queue so appending can be done from both sides. We save successive centre positions in the deque so the path can be traced.
 
 ![Ball Detection](https://user-images.githubusercontent.com/72495927/115219846-86a8bf80-a125-11eb-918a-088097f32595.gif)

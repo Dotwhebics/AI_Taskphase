@@ -26,11 +26,11 @@ while capture.isOpened():
     mask = cv.dilate(mask, None, iterations = 5)
 
     contours = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)  # outer contours of detected object
-    contours = imutils.grab_contours(contours)
+    contours = imutils.grab_contours(contours)    # elimintes false positive contours
     center = None
 
     if len(contours) > 0:
-        c = max(contours, key = cv.contourArea)    # min area that encloses all contours
+        c = max(contours, key = cv.contourArea)    # find the contour that encloses max area
         ((x,y), rad) = cv.minEnclosingCircle(c)    # coordinates of centre and radius
         M = cv.moments(c)
         center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"])) 
