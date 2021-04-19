@@ -27,3 +27,11 @@
 > Report on OpenCV and Masking
 
 > Work on Hackerrank 6 stars in Problem Solving
+
+## Week 4 :
+
+> OpenCV Contours, Hough Circles and Colour Space transformations
+
+> Task of making a ball detection program
+
+> Work on Hackerrank 6 stars in Problem Solving
