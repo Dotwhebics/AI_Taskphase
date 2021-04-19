@@ -6,6 +6,9 @@ from collections import deque
 
 capture = cv.VideoCapture(0)
 
+fourcc = cv.VideoWriter_fourcc(*'XVID')
+record = cv.VideoWriter('Detection.avi', fourcc, 20.0, (640,480))
+
 path = deque(maxlen=60)
 
 time.sleep(5)
@@ -43,6 +46,8 @@ while capture.isOpened():
             continue
         thickness = int(np.sqrt(20/float(i+1)) * 2.5)
         cv.line(frame, path[i-1], path[i], (0,0,255), thickness)
+    
+    record.write(frame)
 
     cv.imshow("Live feed", frame)
     if cv.waitKey(1) == 27:
