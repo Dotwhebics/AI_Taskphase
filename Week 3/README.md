@@ -14,4 +14,6 @@ In the task of Making an Invisibility Cloak, we first capture the background and
 
 First, we capture the background image iteratively. The last captured image is stored as background. Then we begin taking live feed from the webcam and whenever red colour is detected (identified as mask as it lies in the specified HSV values). This area (red area) is cut out from the present frame and the blanked out area is filled with the captured background frame. The background has to have absolutely no motion for the desired affect to look real.
 
+![Invisibility cloak]https://user-images.githubusercontent.com/72495927/115182821-42eb9100-a0f8-11eb-881a-8cd849dda603.gif
+
 PS : The camera does not see through the person in the task. It is just output of some computation.
