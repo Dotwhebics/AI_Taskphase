@@ -1,5 +1,154 @@
 import kociemba as kb
 import cv2 as cv
+import numpy as np
+import imutils
+
+######
+# addition begin
+capture = cv.VideoCapture(0)  # Video Capture object
+
+lower_white = np.array([0,0,0], dtype=np.uint8)  # hsv ranges for white background
+upper_white = np.array([0,0,255], dtype=np.uint8)
+
+lower_skin = np.array([11, 21, 24], dtype=np.uint8)  # hsv ranges for skin
+upper_skin = np.array([30, 51, 40], dtype=np.uint8)
+
+while capture.isOpened():    # Up face
+    istrue, up_face_img = capture.read()
+    cv.imshow("Up face", up_face_img)
+    if cv.waitKey(1) == ord('q'):
+        capture. release()
+        cv.destroyAllWindows()
+        break
+hsv = cv.cvtColor(up_face_img, cv.COLOR_BGR2HSV)
+mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
+mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
+mask = mask_bg + mask_skin
+img = cv.bitwise_and(up_face_img, up_face_img, mask=mask)
+cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+cnts = imutils.grab_contours(cnts)
+c = max(cnts, key=cv.contourArea)
+extLeft = tuple(c[c[:, :, 0].argmin()][0])
+extBot = tuple(c[c[:, :, 1].argmax()][0])
+x_top_up = extLeft[0]
+y_top_up = extLeft[1]
+x_bottom_up = extBot[0]
+y_bottom_up = extBot[1]
+
+while capture.isOpened():    # Right face
+    istrue, right_face_img = capture.read()
+    cv.imshow("Right face", right_face_img)
+    if cv.waitKey(1) == ord('q'):
+        capture. release()
+        cv.destroyAllWindows()
+        break
+hsv = cv.cvtColor(right_face_img, cv.COLOR_BGR2HSV)
+mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
+mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
+mask = mask_bg + mask_skin
+img = cv.bitwise_and(right_face_img, right_face_img, mask=mask)
+cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+cnts = imutils.grab_contours(cnts)
+c = max(cnts, key=cv.contourArea)
+extLeft = tuple(c[c[:, :, 0].argmin()][0])
+extBot = tuple(c[c[:, :, 1].argmax()][0])
+x_top_right = extLeft[0]
+y_top_right = extLeft[1]
+x_bottom_right = extBot[0]
+y_bottom_right = extBot[1]
+
+while capture.isOpened():    # Front face
+    istrue, front_face_img = capture.read()
+    cv.imshow("Front face", front_face_img)
+    if cv.waitKey(1) == ord('q'):
+        capture. release()
+        cv.destroyAllWindows()
+        break
+hsv = cv.cvtColor(front_face_img, cv.COLOR_BGR2HSV)
+mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
+mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
+mask = mask_bg + mask_skin
+img = cv.bitwise_and(front_face_img, front_face_img, mask=mask)
+cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+cnts = imutils.grab_contours(cnts)
+c = max(cnts, key=cv.contourArea)
+extLeft = tuple(c[c[:, :, 0].argmin()][0])
+extBot = tuple(c[c[:, :, 1].argmax()][0])
+x_top_front = extLeft[0]
+y_top_front = extLeft[1]
+x_bottom_front = extBot[0]
+y_bottom_front = extBot[1]
+
+while capture.isOpened():    # Down face
+    istrue, down_face_img = capture.read()
+    cv.imshow("Down face", down_face_img)
+    if cv.waitKey(1) == ord('q'):
+        capture. release()
+        cv.destroyAllWindows()
+        break
+hsv = cv.cvtColor(down_face_img, cv.COLOR_BGR2HSV)
+mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
+mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
+mask = mask_bg + mask_skin
+img = cv.bitwise_and(down_face_img, down_face_img, mask=mask)
+cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+cnts = imutils.grab_contours(cnts)
+c = max(cnts, key=cv.contourArea)
+extLeft = tuple(c[c[:, :, 0].argmin()][0])
+extBot = tuple(c[c[:, :, 1].argmax()][0])
+x_top_down = extLeft[0]
+y_top_down = extLeft[1]
+x_bottom_down = extBot[0]
+y_bottom_down = extBot[1]
+
+while capture.isOpened():    # Left face
+    istrue, left_face_img = capture.read()
+    cv.imshow("Left face", left_face_img)
+    if cv.waitKey(1) == ord('q'):
+        capture. release()
+        cv.destroyAllWindows()
+        break
+hsv = cv.cvtColor(left_face_img, cv.COLOR_BGR2HSV)
+mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
+mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
+mask = mask_bg + mask_skin
+img = cv.bitwise_and(left_face_img, left_face_img, mask=mask)
+cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+cnts = imutils.grab_contours(cnts)
+c = max(cnts, key=cv.contourArea)
+extLeft = tuple(c[c[:, :, 0].argmin()][0])
+extBot = tuple(c[c[:, :, 1].argmax()][0])
+x_top_left = extLeft[0]
+y_top_left = extLeft[1]
+x_bottom_left = extBot[0]
+y_bottom_left = extBot[1]
+
+while capture.isOpened():    # Back face
+    istrue, back_face_img = capture.read()
+    cv.imshow("Back face", back_face_img)
+    if cv.waitKey(1) == ord('q'):
+        capture. release()
+        cv.destroyAllWindows()
+        break
+hsv = cv.cvtColor(back_face_img, cv.COLOR_BGR2HSV)
+mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
+mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
+mask = mask_bg + mask_skin
+img = cv.bitwise_and(back_face_img, back_face_img, mask=mask)
+cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+cnts = imutils.grab_contours(cnts)
+c = max(cnts, key=cv.contourArea)
+extLeft = tuple(c[c[:, :, 0].argmin()][0])
+extBot = tuple(c[c[:, :, 1].argmax()][0])
+x_top_back = extLeft[0]
+y_top_back = extLeft[1]
+x_bottom_back = extBot[0]
+y_bottom_back = extBot[1]
+
+capture.release()
+
+#addition end
+######
 
 # getting the cube faces and determination of top left and bottom right corner coordinates
 # to be completed
