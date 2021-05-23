@@ -24,7 +24,8 @@ hsv = cv.cvtColor(up_face_img, cv.COLOR_BGR2HSV)
 mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
 mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
 mask = mask_bg + mask_skin
-img = cv.bitwise_and(up_face_img, up_face_img, mask=mask)
+mask_inverted = cv.bitwise_not(mask)
+img = cv.bitwise_and(up_face_img, up_face_img, mask=mask_inverted)
 cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 cnts = imutils.grab_contours(cnts)
 c = max(cnts, key=cv.contourArea)
@@ -46,7 +47,8 @@ hsv = cv.cvtColor(right_face_img, cv.COLOR_BGR2HSV)
 mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
 mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
 mask = mask_bg + mask_skin
-img = cv.bitwise_and(right_face_img, right_face_img, mask=mask)
+mask_inverted = cv.bitwise_not(mask)
+img = cv.bitwise_and(right_face_img, right_face_img, mask=mask_inverted)
 cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 cnts = imutils.grab_contours(cnts)
 c = max(cnts, key=cv.contourArea)
@@ -68,7 +70,8 @@ hsv = cv.cvtColor(front_face_img, cv.COLOR_BGR2HSV)
 mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
 mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
 mask = mask_bg + mask_skin
-img = cv.bitwise_and(front_face_img, front_face_img, mask=mask)
+mask_inverted = cv.bitwise_not(mask)
+img = cv.bitwise_and(front_face_img, front_face_img, mask=mask_inverted)
 cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 cnts = imutils.grab_contours(cnts)
 c = max(cnts, key=cv.contourArea)
@@ -90,7 +93,8 @@ hsv = cv.cvtColor(down_face_img, cv.COLOR_BGR2HSV)
 mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
 mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
 mask = mask_bg + mask_skin
-img = cv.bitwise_and(down_face_img, down_face_img, mask=mask)
+mask_inverted = cv.bitwise_not(mask)
+img = cv.bitwise_and(down_face_img, down_face_img, mask=mask_inverted)
 cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 cnts = imutils.grab_contours(cnts)
 c = max(cnts, key=cv.contourArea)
@@ -112,7 +116,8 @@ hsv = cv.cvtColor(left_face_img, cv.COLOR_BGR2HSV)
 mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
 mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
 mask = mask_bg + mask_skin
-img = cv.bitwise_and(left_face_img, left_face_img, mask=mask)
+mask_inverted = cv.bitwise_not(mask)
+img = cv.bitwise_and(left_face_img, left_face_img, mask=mask_inverted)
 cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 cnts = imutils.grab_contours(cnts)
 c = max(cnts, key=cv.contourArea)
@@ -134,7 +139,8 @@ hsv = cv.cvtColor(back_face_img, cv.COLOR_BGR2HSV)
 mask_bg = cv.inRange(hsv, lower_white, upper_white)  # mask for background
 mask_skin = cv.inRange(hsv, lower_skin, upper_skin)  # mask skin
 mask = mask_bg + mask_skin
-img = cv.bitwise_and(back_face_img, back_face_img, mask=mask)
+mask_inverted = cv.bitwise_not(mask)
+img = cv.bitwise_and(back_face_img, back_face_img, mask=mask_inverted)
 cnts = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 cnts = imutils.grab_contours(cnts)
 c = max(cnts, key=cv.contourArea)
